@@ -1,4 +1,4 @@
-package org.example.duplo.dto.book;
+package org.example.duplo.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

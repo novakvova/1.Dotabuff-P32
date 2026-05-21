@@ -1,11 +1,11 @@
-package org.example.duplo.dto.book;
+package org.example.duplo.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class HeroDto {
-    private Long id;
+    private Integer id;
 
     private String name;
 

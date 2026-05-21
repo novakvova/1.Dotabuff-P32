@@ -1,6 +1,6 @@
 package org.example.duplo.services;
 
-import org.example.duplo.dto.book.MatchDto;
+import org.example.duplo.dtos.MatchDto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

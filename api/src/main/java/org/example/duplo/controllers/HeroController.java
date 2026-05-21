@@ -4,7 +4,7 @@ package org.example.duplo.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.example.duplo.dto.book.HeroDto;
+import org.example.duplo.dtos.HeroDto;
 import org.example.duplo.services.HeroService;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +26,7 @@ public class HeroController {
 
     @Operation(summary = "Отримати героя за id")
     @GetMapping("/heroes/{id}")
-    public HeroDto getHeroById(@PathVariable Long id) {
+    public HeroDto getHeroById(@PathVariable int id) {
         return heroService.getHeroById(id);
     }
 

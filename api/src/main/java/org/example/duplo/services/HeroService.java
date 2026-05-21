@@ -1,6 +1,6 @@
 package org.example.duplo.services;
 
-import org.example.duplo.dto.book.HeroDto;
+import org.example.duplo.dtos.HeroDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -32,7 +32,7 @@ public class HeroService {
                 .toList();
     }
 
-    public HeroDto getHeroById(Long id) {
+    public HeroDto getHeroById(int id) {
 
         HeroDto[] response =
                 restTemplate.getForObject(heroUrl, HeroDto[].class);
