@@ -20,6 +20,9 @@ function Header() {
                             <Link to="books-page" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
                                 Книги
                             </Link>
+                            <Link to="heroes-page" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
+                                Герої
+                            </Link>
                         </ul>
                     </div>
                     {/*<div className="flex items-center gap-4">*/}
