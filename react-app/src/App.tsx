@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { HeroesPage } from './pages/HeroesPage'; // Підключаємо реальну сторінку героїв
 
 function App() {
-  // Створюємо перемикач: 'news' або 'heroes'
+  // Створюємо перемикач news або heroes
   const [activeTab, setActiveTab] = useState<'news' | 'heroes'>('news');
 
   return (
     <div style={{ backgroundColor: '#151b22', minHeight: '100vh', margin: 0, fontFamily: 'sans-serif' }}>
       
-      {/* НАША ВЕРХНЯ ПЛАШКА (МЕНЮ DOTABUFF) */}
+      {/* НАША ВЕРХНЯ ПЛАШКА МЕНЮ DOTABUFF */}
       <header style={{ 
         backgroundColor: '#1c242d', 
         borderBottom: '1px solid #2c3e50', 
@@ -63,7 +63,6 @@ function App() {
 
       {/* ЛОГІКА ПЕРЕМИКАННЯ КОНТЕНТУ */}
       <main style={{ padding: '20px' }}>
-        {/* Тепер замість заглушки рендериться справжня HeroesPage */}
         {activeTab === 'news' ? <HomePage /> : <HeroesPage />}
       </main>
 
