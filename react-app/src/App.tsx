@@ -1,22 +1,21 @@
-import { useState } from 'react';
+import  { useState } from 'react';
 import { HomePage } from './pages/HomePage';
-import { HeroesPage } from './pages/HeroesPage';
+import { HeroesPage } from './pages/HeroesPage'; // Підключаємо реальну сторінку героїв
 import {Route, Routes} from "react-router-dom";
 import Layout from "./widgets/Layout";
-
 function App() {
-  // Створюємо перемикач: 'news' або 'heroes'
+  // Створюємо перемикач news або heroes
   const [activeTab, setActiveTab] = useState<'news' | 'heroes'>('news');
 
   return (
     // <div style={{ backgroundColor: '#151b22', minHeight: '100vh', margin: 0, fontFamily: 'sans-serif' }}>
-    //
-    //   {/* НАША ВЕРХНЯ ПЛАШКА (МЕНЮ DOTABUFF) */}
-    //   <header style={{
-    //     backgroundColor: '#1c242d',
-    //     borderBottom: '1px solid #2c3e50',
-    //     padding: '15px 30px',
-    //     display: 'flex',
+      
+    //   {/* НАША ВЕРХНЯ ПЛАШКА МЕНЮ DOTABUFF */}
+    //   <header style={{ 
+    //     backgroundColor: '#1c242d', 
+    //     borderBottom: '1px solid #2c3e50', 
+    //     padding: '15px 30px', 
+    //     display: 'flex', 
     //     alignItems: 'center',
     //     justifyContent: 'space-between'
     //   }}>
@@ -24,13 +23,13 @@ function App() {
     //     <div style={{ color: '#ff4c4c', fontWeight: 'bold', fontSize: '22px', letterSpacing: '1.5px' }}>
     //       DOTABUFF
     //     </div>
-    //
+
     //     {/* Навігаційні кнопки */}
     //     <nav style={{ display: 'flex', gap: '20px' }}>
-    //       <button
+    //       <button 
     //         onClick={() => setActiveTab('news')}
-    //         style={{
-    //           color: activeTab === 'news' ? 'white' : '#b0bec5',
+    //         style={{ 
+    //           color: activeTab === 'news' ? 'white' : '#b0bec5', 
     //           backgroundColor: activeTab === 'news' ? '#ff4c4c' : 'transparent',
     //           border: 'none',
     //           fontWeight: 'bold',
@@ -43,11 +42,11 @@ function App() {
     //       >
     //         Новини
     //       </button>
-    //
-    //       <button
+          
+    //       <button 
     //         onClick={() => setActiveTab('heroes')}
-    //         style={{
-    //           color: activeTab === 'heroes' ? 'white' : '#b0bec5',
+    //         style={{ 
+    //           color: activeTab === 'heroes' ? 'white' : '#b0bec5', 
     //           backgroundColor: activeTab === 'heroes' ? '#ff4c4c' : 'transparent',
     //           border: 'none',
     //           fontWeight: 'bold',
@@ -62,15 +61,14 @@ function App() {
     //       </button>
     //     </nav>
     //   </header>
-    //
+
     //   {/* ЛОГІКА ПЕРЕМИКАННЯ КОНТЕНТУ */}
     //   <main style={{ padding: '20px' }}>
-    //     {/* Тепер замість заглушки рендериться справжня HeroesPage */}
     //     {activeTab === 'news' ? <HomePage /> : <HeroesPage />}
     //   </main>
-    // </div>
 
-      <>
+    // </div>
+    <>
           <Routes>
               <Route path="/"  element={<Layout/>}>
                   <Route index element={<HomePage/>} />
