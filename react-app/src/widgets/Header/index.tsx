@@ -7,8 +7,8 @@ function Header() {
 
                     <div className="flex items-center">
                         <h1 className="self-center font-semibold whitespace-nowrap p-3 dark:text-white">
-                            <Link to="/" className="hover:text-gray-200 flex items-center font-medium text-lg dark:text-white">
-                                Java-React
+                            <Link to="/" className="text-[#ff4c4c] font-bold text-[22px] tracking-[1.5px]">
+                                DOTABUFF
                             </Link>
                         </h1>
                     </div>
@@ -16,9 +16,6 @@ function Header() {
                         <ul className="flex flex-col font-medium sm:flex-row sm:space-x-5 sm:mt-0">
                             <Link to="/" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
                                 Головна
-                            </Link>
-                            <Link to="books-page" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
-                                Книги
                             </Link>
                             <Link to="heroes-page" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
                                 Герої

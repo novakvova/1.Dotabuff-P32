@@ -1,11 +1,11 @@
-import  { useState } from 'react';
 import { HomePage } from './pages/HomePage';
 import { HeroesPage } from './pages/HeroesPage'; // Підключаємо реальну сторінку героїв
 import {Route, Routes} from "react-router-dom";
 import Layout from "./widgets/Layout";
 function App() {
+
   // Створюємо перемикач news або heroes
-  const [activeTab, setActiveTab] = useState<'news' | 'heroes'>('news');
+  // const [activeTab, setActiveTab] = useState<'news' | 'heroes'>('news');
 
   return (
     // <div style={{ backgroundColor: '#151b22', minHeight: '100vh', margin: 0, fontFamily: 'sans-serif' }}>

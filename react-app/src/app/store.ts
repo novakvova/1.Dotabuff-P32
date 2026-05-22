@@ -1,14 +1,14 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {type TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
-import {bookApi} from "../entityes/book/api/bookApi.ts";
+import {heroesApi} from "../entityes/heroes/api/heroesApi.ts";
 
 
 export const store = configureStore({
     reducer: {
-        [bookApi.reducerPath]: bookApi.reducer,
+        [heroesApi.reducerPath]: heroesApi.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-        .concat(bookApi.middleware)
+        .concat(heroesApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;
