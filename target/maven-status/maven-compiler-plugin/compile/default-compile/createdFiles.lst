@@ -1,0 +1,5 @@
+com\example\dotastats\DotaStatsApplication.class
+com\example\dotastats\service\HeroService.class
+com\example\dotastats\controller\HeroController.class
+com\example\dotastats\dto\MatchDto.class
+com\example\dotastats\dto\HeroDto.class
