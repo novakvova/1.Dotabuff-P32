@@ -1,7 +1,7 @@
-const API_BASE_URL : string = import.meta.env.VITE_API_BASE_URL;
+const OPEN_DOTA_BASE_URL : string = import.meta.env.VITE_OPEN_DOTA_BASE_URL;
 
-const APP_ENV = {
-    API_BASE_URL,
+export const APP_ENV = {
+    OPEN_DOTA_BASE_URL,
 };
 
 export default APP_ENV;

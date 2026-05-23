@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type{OpenDotaHero} from '../../entityes/heroes/model/Iheroes';
+import {useGetHeroesQuery} from "../../entityes/heroes/api/heroesApi.ts";
 export const HeroesPage: React.FC = () => {
   const [heroes, setHeroes] = useState<OpenDotaHero[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -7,6 +8,11 @@ export const HeroesPage: React.FC = () => {
   const [hoveredHeroId, setHoveredHeroId] = useState<string | null>(null);
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [activeHero, setActiveHero] = useState<OpenDotaHero | null>(null);
+
+  const {data, isLoading, isError } = useGetHeroesQuery();
+    console.log(data);
+    console.log(isError);
+    console.log(isLoading);
 
   useEffect(() => {
     fetch('https://api.opendota.com/api/heroStats')
