@@ -1,50 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import type{OpenDotaHero} from '../../entityes/heroes/model/Iheroes';
-import {useGetHeroesQuery} from "../../entityes/heroes/api/heroesApi.ts";
+import type { OpenDotaHero } from '../../entityes/heroes/model/Iheroes';
+import { useGetHeroesQuery } from "../../entityes/heroes/api/heroesApi.ts";
+
 export const HeroesPage: React.FC = () => {
   const [heroes, setHeroes] = useState<OpenDotaHero[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
   const [hoveredHeroId, setHoveredHeroId] = useState<string | null>(null);
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [activeHero, setActiveHero] = useState<OpenDotaHero | null>(null);
 
-  const {data, isLoading, isError } = useGetHeroesQuery();
-    console.log(data);
-    console.log(isError);
-    console.log(isLoading);
+  const { data, isLoading, isError } = useGetHeroesQuery();
 
   useEffect(() => {
-    fetch('https://api.opendota.com/api/heroStats')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Не вдалося завантажити дані з OpenDota API');
-        }
-        return response.json();
-      })
-      .then((data: OpenDotaHero[]) => {
-        if (Array.isArray(data)) {
-          const sortedHeroes = data.sort((a, b) => 
-            (a.localized_name || '').localeCompare(b.localized_name || '')
-          );
-          setHeroes(sortedHeroes);
+    if (data && Array.isArray(data)) {
+      // Сортуємо героїв за алфавітом
+      const sortedHeroes = [...data].sort((a, b) => 
+        (a.localized_name || '').localeCompare(b.localized_name || '')
+      );
+      setHeroes(sortedHeroes);
 
-          const alchemist = sortedHeroes.find(h => h.localized_name.toLowerCase() === 'alchemist');
-          if (alchemist) {
-            setActiveHero(alchemist);
-          } else if (sortedHeroes.length > 0) {
-            setActiveHero(sortedHeroes[0]);
-          }
-        }
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+      const alchemist = sortedHeroes.find(h => h.localized_name.toLowerCase() === 'alchemist');
+      if (alchemist) {
+        setActiveHero(alchemist);
+      } else if (sortedHeroes.length > 0) {
+        setActiveHero(sortedHeroes[0]);
+      }
+    }
+  }, [data]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', color: '#fff', fontSize: '20px' }}>
         <div style={{ textAlign: 'center' }}>
@@ -56,10 +39,11 @@ export const HeroesPage: React.FC = () => {
     );
   }
 
-  if (error) {
+  // Помилка через стан з RTK Query
+  if (isError) {
     return (
       <div style={{ color: '#f44336', textAlign: 'center', padding: '50px', fontSize: '18px' }}>
-        Помилка: {error}. Перевірте підключення до інтернету.
+        Помилка: Не вдалося завантажити дані з OpenDota API. Перевірте підключення до інтернету.
       </div>
     );
   }
@@ -168,7 +152,7 @@ export const HeroesPage: React.FC = () => {
                 {hoveredHeroId === uniqueKey && (
                   <div style={{
                     position: 'absolute',
-                    top: '-95px',
+                    top: '-136px',
                     left: '50%',
                     transform: 'translateX(-50%)',
                     backgroundColor: '#1f2933',
@@ -222,7 +206,7 @@ export const HeroesPage: React.FC = () => {
   return (
     <div style={{ display: 'flex', maxWidth: '1600px', margin: '0 auto', color: 'white', backgroundColor: '#101519', minHeight: '100vh', padding: '20px' }}>
       
-      {/*  ЛІВА ПАНЕЛЬ*/}
+      {/* ЛІВА ПАНЕЛЬ */}
       <div style={{ 
         width: '200px', 
         minWidth: '200px', 
@@ -270,7 +254,6 @@ export const HeroesPage: React.FC = () => {
         <h1 style={{ color: '#fff', borderBottom: '3px solid #37474f', paddingBottom: '15px', fontSize: '28px', marginBottom: '10px', fontWeight: 'bold' }}>
           Герої Dota 2
         </h1>
-       
 
         {renderCategory('str', 'СИЛА', '#f44336', strengthIcon)}
         {renderCategory('agi', 'СПРИТНІСТЬ', '#4caf50', agilityIcon)}
