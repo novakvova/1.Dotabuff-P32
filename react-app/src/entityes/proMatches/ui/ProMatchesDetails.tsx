@@ -1,18 +1,17 @@
 import ProMatchCard from "./ProMatchCard.tsx";
-import {useGetProMatchesQuery} from "../api/proMatchesApi.ts";
+import type {IProMatches} from "../model/IProMatches.tsx";
 
-const ProMatchesDetails = () => {
-    const {data, isLoading, isError} = useGetProMatchesQuery();
+type Props = {
+    matches: IProMatches[];
+};
 
-    console.log(data);
-    console.log("Error data...", isError);
-    console.log("Loading data...", isLoading);
+const ProMatchesDetails = ({matches}:Props) => {
 
     return (
         <>
             <div className="w-full">
                 <div>
-                    {data?.map((match) => (
+                    {matches?.map((match) => (
                         <div className={"mb-4"}
                              key={match.match_id}>
                             <ProMatchCard
