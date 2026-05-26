@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 function Header() {
     return (
         <header>
@@ -7,19 +7,40 @@ function Header() {
 
                     <div className="flex items-center">
                         <h1 className="self-center font-semibold whitespace-nowrap p-3 dark:text-white">
-                            <Link to="/" className="text-[#ff4c4c] font-bold text-[22px] tracking-[1.5px]">
+                            <NavLink to="/" className="text-[#ff4c4c] font-bold text-[22px] tracking-[1.5px]">
                                 DOTABUFF
-                            </Link>
+                            </NavLink>
                         </h1>
                     </div>
                     <div className="mx-auto justify-between items-center w-full sm:flex sm:w-auto ">
                         <ul className="flex flex-col font-medium sm:flex-row sm:space-x-5 sm:mt-0">
-                            <Link to="/" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
+                            <NavLink to="/" className={({ isActive }) =>
+                                `flex items-center text-sm transition-colors ${
+                                    isActive
+                                        ? "dota-color"
+                                        : "dark:text-white hover:text-gray-200"
+                                }`
+                            }>
                                 Головна
-                            </Link>
-                            <Link to="heroes-page" className="hover:text-gray-200 flex items-center font-medium dark:text-white">
+                            </NavLink>
+                            <NavLink to="heroes-page" className={({ isActive }) =>
+                                `flex items-center text-sm transition-colors ${
+                                    isActive
+                                        ? "dota-color"
+                                        : "dark:text-white hover:text-gray-200"
+                                }`
+                            }>
                                 Герої
-                            </Link>
+                            </NavLink>
+                            <NavLink to="pro-matches-page" className={({ isActive }) =>
+                                `flex items-center text-sm transition-colors ${
+                                    isActive
+                                        ? "dota-color"
+                                        : "dark:text-white hover:text-gray-200"
+                                }`
+                            }>
+                                Професійні матчі
+                            </NavLink>
                         </ul>
                     </div>
                     {/*<div className="flex items-center gap-4">*/}

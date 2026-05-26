@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { OpenDotaHero } from '../../entityes/heroes/model/Iheroes';
 import { useGetHeroesQuery } from "../../entityes/heroes/api/heroesApi.ts";
+import Loading from "../../widgets/Loading";
 
 export const HeroesPage: React.FC = () => {
   const [heroes, setHeroes] = useState<OpenDotaHero[]>([]);
@@ -29,13 +30,7 @@ export const HeroesPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', color: '#fff', fontSize: '20px' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ width: '50px', height: '50px', border: '5px solid #2c3e50', borderTop: '5px solid #ff4c4c', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 20px' }}></div>
-          Завантаження героїв з OpenDota...
-          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
-        </div>
-      </div>
+      <Loading message={"Завантаження героїв з OpenDota..."}/>
     );
   }
 
@@ -78,11 +73,11 @@ export const HeroesPage: React.FC = () => {
 
     return (
       <div style={{ marginBottom: '35px' }}>
-        <h2 style={{ 
-          color: titleColor, 
-          fontSize: '18px', 
-          borderBottom: '2px solid #2c3e50', 
-          paddingBottom: '8px', 
+        <h2 style={{
+          color: titleColor,
+          fontSize: '18px',
+          borderBottom: '2px solid #2c3e50',
+          paddingBottom: '8px',
           marginBottom: '20px',
           display: 'flex',
           alignItems: 'center',
@@ -91,17 +86,17 @@ export const HeroesPage: React.FC = () => {
           <img src={iconUrl} alt={title} style={{ width: '22px', height: '22px' }} />
           {title} ({filtered.length})
         </h2>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fill, minmax(76px, 1fr))', 
-          gap: '12px' 
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(76px, 1fr))',
+          gap: '12px'
         }}>
           {filtered.map((hero) => {
             const picks = hero.pro_pick || 0;
             const wins = hero.pro_win || 0;
             const winRate = picks > 0 ? ((wins / picks) * 100).toFixed(2) + '%' : '0.00%';
-            
+
             const heroImageId = hero.name.replace('npc_dota_hero_', '');
             const fullImgUrl = `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${heroImageId}.png`;
             const uniqueKey = `${apiAttrKey}-${hero.id}`;
@@ -127,22 +122,22 @@ export const HeroesPage: React.FC = () => {
                   boxShadow: isHeroActive ? '0px 0px 8px rgba(255, 76, 76, 0.6)' : 'none'
                 }}
               >
-                <img 
-                  src={fullImgUrl} 
-                  alt={hero.localized_name} 
-                  style={{ width: '100%', height: '43px', objectFit: 'cover', borderRadius: '4px 4px 0 0' }} 
+                <img
+                  src={fullImgUrl}
+                  alt={hero.localized_name}
+                  style={{ width: '100%', height: '43px', objectFit: 'cover', borderRadius: '4px 4px 0 0' }}
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = 'https://via.placeholder.com/76x43/1c242d/white?text=?';
                   }}
                 />
-                
-                <div style={{ 
-                  marginTop: '4px', 
-                  fontSize: '11px', 
+
+                <div style={{
+                  marginTop: '4px',
+                  fontSize: '11px',
                   fontWeight: '500',
-                  padding: '0 4px', 
-                  overflow: 'hidden', 
-                  textOverflow: 'ellipsis', 
+                  padding: '0 4px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
                   color: isHeroActive ? '#ff4c4c' : '#e0e0e0'
                 }}>
@@ -204,13 +199,13 @@ export const HeroesPage: React.FC = () => {
   const activeHeroImgUrl = `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${activeHeroImgId}.png`;
 
   return (
-    <div style={{ display: 'flex', maxWidth: '1600px', margin: '0 auto', color: 'white', backgroundColor: '#101519', minHeight: '100vh', padding: '20px' }}>
+    <div style={{ display: 'flex', maxWidth: '1600px', margin: '0 auto', color: 'white', minHeight: '100vh', padding: '20px' }}>
       
       {/* ЛІВА ПАНЕЛЬ */}
       <div style={{ 
         width: '200px', 
-        minWidth: '200px', 
-        backgroundColor: '#1c242d', 
+        minWidth: '200px',
+        backgroundColor: '#111827',
         borderRadius: '8px', 
         padding: '15px', 
         marginRight: '20px', 
@@ -234,7 +229,7 @@ export const HeroesPage: React.FC = () => {
                   borderRadius: '6px',
                   border: '1px solid',
                   borderColor: isActive ? '#ff4c4c' : '#2c3e50',
-                  backgroundColor: isActive ? 'rgba(255, 76, 76, 0.12)' : '#101519',
+                  backgroundColor: isActive ? '#111827' : '#1f2937',
                   color: isActive ? '#ff4c4c' : '#b0bec5',
                   textAlign: 'left',
                   cursor: 'pointer',
@@ -266,7 +261,7 @@ export const HeroesPage: React.FC = () => {
         <div style={{ 
           width: '320px', 
           minWidth: '320px', 
-          backgroundColor: '#1c242d', 
+          backgroundColor: '#111827',
           borderRadius: '8px', 
           padding: '20px', 
           border: '1px solid #ff4c4c',

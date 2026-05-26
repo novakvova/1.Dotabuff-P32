@@ -1,5 +1,6 @@
 import { Outlet} from "react-router-dom";
 import Header from "../Header";
+import Footer from "../Footer";
 
 export default function Layout() {
 
@@ -7,9 +8,10 @@ export default function Layout() {
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50
             dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 ">
             <Header/>
-            <main className="flex-1">
+            <main className="flex-1 xl:mx-20">
                 <Outlet />
             </main>
+            <Footer/>
         </div>
     );
 }
