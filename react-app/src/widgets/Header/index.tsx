@@ -15,27 +15,27 @@ function Header() {
                     <div className="mx-auto justify-between items-center w-full sm:flex sm:w-auto ">
                         <ul className="flex flex-col font-medium sm:flex-row sm:space-x-5 sm:mt-0">
                             <NavLink to="/" className={({ isActive }) =>
-                                `flex items-center font-medium transition-colors ${
+                                `flex items-center text-sm transition-colors ${
                                     isActive
-                                        ? "text-red-500"
+                                        ? "dota-color"
                                         : "dark:text-white hover:text-gray-200"
                                 }`
                             }>
                                 Головна
                             </NavLink>
                             <NavLink to="heroes-page" className={({ isActive }) =>
-                                `flex items-center font-medium transition-colors ${
+                                `flex items-center text-sm transition-colors ${
                                     isActive
-                                        ? "text-red-500"
+                                        ? "dota-color"
                                         : "dark:text-white hover:text-gray-200"
                                 }`
                             }>
                                 Герої
                             </NavLink>
                             <NavLink to="pro-matches-page" className={({ isActive }) =>
-                                `flex items-center font-medium transition-colors ${
+                                `flex items-center text-sm transition-colors ${
                                     isActive
-                                        ? "text-red-500"
+                                        ? "dota-color"
                                         : "dark:text-white hover:text-gray-200"
                                 }`
                             }>

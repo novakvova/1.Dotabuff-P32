@@ -2,16 +2,19 @@ import {configureStore} from "@reduxjs/toolkit";
 import {type TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {heroesApi} from "../entityes/heroes/api/heroesApi.ts";
 import {proMatchesApi} from "../entityes/proMatches/api/proMatchesApi.ts";
+import {newsApi} from "../entityes/news/api/newsApi.ts";
 
 
 export const store = configureStore({
     reducer: {
         [heroesApi.reducerPath]: heroesApi.reducer,
         [proMatchesApi.reducerPath]: proMatchesApi.reducer,
+        [newsApi.reducerPath]: newsApi.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
         .concat(heroesApi.middleware)
         .concat(proMatchesApi.middleware)
+        .concat(newsApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

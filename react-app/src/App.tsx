@@ -1,8 +1,9 @@
-import { HomePage } from './pages/HomePage';
+
 import { HeroesPage } from './pages/HeroesPage';
 import {Route, Routes} from "react-router-dom";
 import ProMatchesPage from "./pages/ProMatchesPage";
 import Layout from "./widgets/Layout";
+import HomePage from "./pages/HomePage";
 function App() {
 
   return (

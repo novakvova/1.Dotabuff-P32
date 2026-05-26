@@ -12,7 +12,7 @@ const ProMatchCard = ({ match }: Props) => {
 
     return (
         <>
-            <div className="rounded-xl border-2 border-gray-700 px-3 p-2 w-full hover:border-red-600 hover:bg-gray-900">
+            <div className="shadow rounded-xl border-2 border-gray-700 px-3 p-2 w-full hover:bg-gray-900 transition doration-200">
                 <div className="flex items-center justify-between ">
 
                     <div>

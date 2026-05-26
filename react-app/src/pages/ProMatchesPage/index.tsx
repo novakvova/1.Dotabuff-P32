@@ -3,6 +3,8 @@ import ProMatchesDetails from "../../entityes/proMatches/ui/ProMatchesDetails.ts
 import LeftPanel from "../../entityes/proMatches/ui/LeftPanel.tsx";
 import {useState} from "react";
 import type {SortType} from "../../entityes/proMatches/model/SortType.ts";
+import Loading from "../../widgets/Loading";
+import Error from "../../widgets/Error";
 
 
 const ProMatchesPage = () => {
@@ -25,6 +27,22 @@ const ProMatchesPage = () => {
         }
     });
 
+    if (isLoading) {
+        return (
+            <>
+                <Loading message={"Завантаження матчів з OpenDota..."}/>
+            </>
+        );
+    }
+
+    if (isError) {
+        return (
+            <>
+                <Error message={"Помилка: Не вдалося завантажити дані з OpenDota API. Перевірте підключення до інтернету."}/>
+            </>
+        );
+    }
+
     return (
         <>
             <div className={"flex gap-6 px-6 py-6"}>
@@ -34,6 +52,9 @@ const ProMatchesPage = () => {
                 />
 
                 <main className="w-full">
+                    <h1 className="mb-2 border-b-4 border-[#37474f] pb-4 text-3xl font-bold text-white">
+                        Професійні матчі Dota 2
+                    </h1>
                     <ProMatchesDetails
                         matches={sortedMatches}
                     />
