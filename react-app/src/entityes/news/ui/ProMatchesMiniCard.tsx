@@ -23,12 +23,12 @@ const ProMatchesMiniCard = ({match}:Props) => {
 
                 <div className="mt-2 flex items-center justify-between">
                     <div className="flex items-center justify-between gap-3 w-full">
-                        <div>
+                        <div className="flex items-center gap-1">
                             <p className="text-xs uppercase tracking-wide text-gray-500">
                                 Radiant
                             </p>
 
-                            <p className="text-xl font-bold text-green-400">
+                            <p className="text-sm font-bold text-green-400">
                                 {match.radiant_score}
                             </p>
                         </div>
@@ -37,12 +37,12 @@ const ProMatchesMiniCard = ({match}:Props) => {
                             —
                         </div>
 
-                        <div>
+                        <div className="flex items-center gap-1">
                             <p className="text-xs uppercase tracking-wide text-gray-500">
                                 Dire
                             </p>
 
-                            <p className="text-xl font-bold text-red-400">
+                            <p className="text-sm font-bold text-red-400">
                                 {match.dire_score}
                             </p>
                         </div>

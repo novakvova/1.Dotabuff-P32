@@ -88,12 +88,18 @@ const ProMatchCard = ({ match }: Props) => {
 
                     <div>
                         <p className="text-xs text-gray-500">
-                            Match start time
+                            Початок матчу
                         </p>
 
                         <p className="text-sm text-gray-300">
                             <p className="text-sm text-gray-300">
-                                {new Date(match.start_time * 1000).toLocaleDateString()}
+                                {new Date(match.start_time * 1000).toLocaleString("uk-UA", {
+                                    day: "2-digit",
+                                    month: "2-digit",
+                                    year: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                })}
                             </p>
                         </p>
                     </div>
